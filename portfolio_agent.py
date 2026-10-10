@@ -39,6 +39,44 @@ def violation(record, limits, capital):
         for m in record['metrics'].values())
 
 
+def feedback_summary(record):
+    """One candidate's inputs and compact outcome; never include its history."""
+    failures = {name: metrics['violations'] for name, metrics in record['metrics'].items()
+                if metrics['violations']}
+    return dict(input_configuration=asdict(record['policy']),
+                status='PASSED' if record['feasible'] else 'FAILED',
+                message=('All scenario constraints passed.' if record['feasible']
+                         else 'Constraint violations: ' + json.dumps(failures)),
+                mean_fees=round(record['objective'], 6),
+                normalized_violation=round(record['normalized_violation'], 6))
+
+
+def candidate_memory(records):
+    """At most eight rows and 2,000 characters, regardless of trial count."""
+    rank = lambda r: (not r['feasible'], r['objective'] if r['feasible']
+                      else r['normalized_violation'])
+    chosen = sorted(records, key=rank)[:3] + list(reversed(records[-5:]))
+    rows, seen = [], set()
+    codes = {'drawdown_cvar': 'D', 'terminal_loss_cvar': 'L',
+             'cash_floor': 'C', 'insolvency': 'I'}
+    for record in chosen:
+        policy = record['policy']
+        key = (policy.base_band, policy.drawdown_response)
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append(dict(b=round(policy.base_band, 6),
+                         k=round(policy.drawdown_response, 6),
+                         status='P' if record['feasible'] else 'F',
+                         fee=round(record['objective'], 4),
+                         v=round(record['normalized_violation'], 4),
+                         fail={name: ''.join(codes[v] for v in m['violations'])
+                               for name, m in record['metrics'].items() if m['violations']}))
+    while len(json.dumps(rows, separators=(',', ':'))) > 2000:
+        rows.pop()
+    return rows
+
+
 def run(args):
     config = Config(steps=args.steps)
     limits = Limits(args.alpha, args.drawdown_limit, args.loss_limit, args.cash_floor)
@@ -56,11 +94,16 @@ def run(args):
         'the band. No other policy changes are allowed. First satisfy all constraints '
         'in every scenario; then minimize base mean fees. For infeasible proposals, '
         'reduce normalized_violation. Do not repeat previous parameters. '
+        'Compressed memory lists up to three best and five recent candidates, '
+        'deduplicated: b=base_band, k=drawdown_response, status P=PASSED/F=FAILED, '
+        'fee=base mean fees, v=normalized violation (lower is better), '
+        'fail codes D=drawdown, L=terminal loss, C=cash, I=insolvency. '
         'High-vol paths have 35% volatility; gap paths jump +/-25% at quarter year. '
         'Cash breaches are measured after trades, not prevented. '
         + json.dumps({'config': asdict(config), 'limits': asdict(limits)}))}]
     records, attempts, seen = [], [], set()
     best = None
+    latest_feedback = None
     usage = {'prompt_tokens': 0, 'completion_tokens': 0, 'total_tokens': 0}
 
     def save(status, final_test=None):
@@ -86,19 +129,29 @@ def run(args):
             response.raise_for_status()
             args.model = response.json()['data'][0]['id']
         for iteration in range(1, args.iterations + 1):
-            messages.append({'role': 'user', 'content': 'Propose the next policy.'})
+            # Bounded summaries retain useful search memory without growing transcripts.
+            context = dict(iteration=iteration, latest_candidate=latest_feedback,
+                           candidate_memory=candidate_memory(records))
+            messages = [messages[0], {'role': 'user', 'content':
+                        'Simulator feedback: ' + json.dumps(context, separators=(',', ':'))
+                        + '\nPropose the next policy.'}]
             response = client.post(base + '/chat/completions', json=dict(
                 model=args.model, messages=messages, temperature=0.6, max_tokens=512,
                 chat_template_kwargs={'enable_thinking': False}))
-            response.raise_for_status()
+            if response.is_error:
+                save('interrupted')
+                raise ValueError(f'Model server HTTP {response.status_code}: '
+                                 f'{response.text[:2000]}. '
+                                 f'Completed results preserved in {output.resolve()}')
             body = response.json()
             for key in usage:
                 usage[key] += body.get('usage', {}).get(key, 0) or 0
             reply = body['choices'][0]['message'].get('content') or ''
-            messages.append({'role': 'assistant', 'content': reply})
             attempt = {'iteration': iteration, 'reply': reply}
+            proposed_configuration = None
             try:
                 policy = parse_policy(reply)
+                proposed_configuration = asdict(policy)
                 key = (policy.base_band, policy.drawdown_response)
                 if key in seen:
                     raise ValueError('Duplicate policy; propose a different policy.')
@@ -108,16 +161,16 @@ def run(args):
                 record['iteration'] = iteration
                 record['normalized_violation'] = violation(record, limits, config.capital)
                 records.append(record)
-                feedback = json.dumps(record, default=asdict)
+                latest_feedback = feedback_summary(record)
                 attempt['evaluated'] = True
                 print(f'Iteration {iteration}: {policy}; feasible={record["feasible"]}; '
                       f'fees={record["objective"]:.4f}; violation={record["normalized_violation"]:.4f}', flush=True)
             except (ValueError, TypeError) as exc:
-                feedback = json.dumps({'error': str(exc)})
+                latest_feedback = dict(input_configuration=proposed_configuration,
+                                       status='FAILED', message=str(exc))
                 attempt.update(evaluated=False, error=str(exc))
                 print(f'Iteration {iteration}: rejected proposal: {exc}', flush=True)
             attempts.append(attempt)
-            messages.append({'role': 'user', 'content': 'Simulator feedback: ' + feedback})
             best = save('running')
     final_test = None
     if best is not None:
