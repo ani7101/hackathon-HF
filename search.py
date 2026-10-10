@@ -52,6 +52,7 @@ def main():
     parser.add_argument('--paths', type=int, default=2000, help='search paths per scenario set')
     parser.add_argument('--test-paths', type=int, default=2000, help='fresh paths for the selected policy')
     parser.add_argument('--steps', type=int, default=252)
+    parser.add_argument('--capital', type=float, default=100)
     parser.add_argument('--seed', type=int, default=10)
     parser.add_argument('--scenario-set', choices=('base', 'stress'), default='stress')
     parser.add_argument('--alpha', type=float, default=0.95)
@@ -63,7 +64,7 @@ def main():
     if min(args.paths, args.test_paths, args.steps) < 1 or args.seed < 0:
         parser.error('path counts and steps must be positive; seed must be nonnegative')
     try:
-        config = Config(steps=args.steps)
+        config = Config(steps=args.steps, capital=args.capital)
         limits = Limits(args.alpha, args.drawdown_limit, args.loss_limit, args.cash_floor)
     except ValueError as exc:
         parser.error(str(exc))

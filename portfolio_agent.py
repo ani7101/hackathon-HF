@@ -78,7 +78,7 @@ def candidate_memory(records):
 
 
 def run(args):
-    config = Config(steps=args.steps)
+    config = Config(steps=args.steps, capital=args.capital)
     limits = Limits(args.alpha, args.drawdown_limit, args.loss_limit, args.cash_floor)
     sets = build_scenario_sets(config, args.paths, args.seed, args.scenario_set)
     base = args.base.rstrip('/')
@@ -191,6 +191,8 @@ def main():
     parser.add_argument('--paths', type=int, default=2000)
     parser.add_argument('--test-paths', type=int, default=2000)
     parser.add_argument('--steps', type=int, default=252)
+    parser.add_argument('--capital', type=float, default=100,
+                        help='Initial investor capital per one-share short call.')
     parser.add_argument('--seed', type=int, default=10)
     parser.add_argument('--scenario-set', choices=('base', 'stress'), default='stress')
     parser.add_argument('--alpha', type=float, default=.95)

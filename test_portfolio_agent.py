@@ -26,7 +26,7 @@ class AgentTests(unittest.TestCase):
         real_client = httpx.Client
         with tempfile.TemporaryDirectory() as tmp:
             args = argparse.Namespace(base='http://localhost:8000', model='mock',
-                iterations=18, paths=8, test_paths=8, steps=8, seed=10,
+                iterations=18, paths=8, test_paths=8, steps=8, capital=100, seed=10,
                 scenario_set='stress', alpha=.95, drawdown_limit=1,
                 loss_limit=1000, cash_floor=-1000, output=str(Path(tmp)/'result.json'))
             with patch.object(portfolio_agent.httpx, 'Client', side_effect=lambda **kw:
