@@ -1,0 +1,5 @@
+Python 3.12.7
+numpy==2.5.3
+scipy==1.18.1
+httpx==0.28.1
+Environment: ../.venv (system site packages enabled)

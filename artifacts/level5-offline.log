@@ -1,0 +1,76 @@
+*** OFFLINE: fake generator, numbers are meaningless ***
+
+=========== level5.1 ===========
+You have SOLD one European call option and must hedge it.
+
+The stock starts at 100; the strike is 100; maturity is T = 0.5 years; the risk-free rate is r = 0; the volatility is sigma = 0.3 and it is the same volatility the option was priced with, so a free, continuous hedge would leave exactly zero risk and zero profit. You received the Black-Scholes premium up front.
+
+You hedge by holding shares of the stock. Time is cut into 126 equal decision times. At a decision time you may trade to the Black-Scholes delta. Every trade costs c = 0.01 of the traded value (c x price x number of shares). At maturity your shares are settled to what delivery needs, and that last trade pays the cost too.
+
+Your policy is scored on many simulated price paths you cannot see:
+    J = E[total transaction cost] + lam x std(terminal profit and loss),   lam = 2
+Lower is better. Trading more often lowers the std but raises the cost; the aim is the best balance.
+
+YOUR CHOICE: an integer interval m between 1 and 63. You look at your hedge only at every m-th decision time (and at the start); when you look, you trade to the Black-Scholes delta.
+
+Finish your reply with exactly one line:
+  policy: interval=<integer>
+Worked example of the format:
+  policy: interval=5
+
+round 0: rewards [0.4, 1.0, 0.4, 1.0]  mean 0.70  best 1.0  0 tool call(s)  (0.2s)
+SOLVED: policy: interval=4
+
+=========== level5.2 ===========
+You have SOLD one European call option and must hedge it.
+
+The stock starts at 100; the strike is 100; maturity is T = 0.5 years; the risk-free rate is r = 0; the volatility is sigma = 0.3 and it is the same volatility the option was priced with, so a free, continuous hedge would leave exactly zero risk and zero profit. You received the Black-Scholes premium up front.
+
+You hedge by holding shares of the stock. Time is cut into 126 equal decision times. At a decision time you may trade to the Black-Scholes delta. Every trade costs c = 0.005 of the traded value (c x price x number of shares). At maturity your shares are settled to what delivery needs, and that last trade pays the cost too.
+
+Your policy is scored on many simulated price paths you cannot see:
+    J = E[total transaction cost] + lam x std(terminal profit and loss),   lam = 2
+Lower is better. Trading more often lowers the std but raises the cost; the aim is the best balance.
+
+YOUR CHOICE: a no-trade band b between 0 and 0.5. You look at your hedge at every decision time, and trade to the Black-Scholes delta only if the number of shares you hold differs from it by MORE than b; otherwise you do nothing.
+
+Finish your reply with exactly one line:
+  policy: band=<number>
+Worked example of the format:
+  policy: band=0.03
+
+round 0: rewards [1.0, 0.4, 0.4, 0.4]  mean 0.55  best 1.0  0 tool call(s)  (1.6s)
+SOLVED: policy: band=0.065
+
+=========== level5.3 ===========
+You have SOLD one European call option and must hedge it.
+
+The stock starts at 100; the strike is 100; maturity is T = 0.5 years; the risk-free rate is r = 0.02; the volatility is sigma = 0.2 and it is the same volatility the option was priced with, so a free, continuous hedge would leave exactly zero risk and zero profit. You received the Black-Scholes premium up front.
+
+You hedge by holding shares of the stock. Time is cut into 126 equal decision times. At a decision time you may trade to the Black-Scholes delta. Every trade costs c = 0.01 of the traded value (c x price x number of shares). At maturity your shares are settled to what delivery needs, and that last trade pays the cost too.
+
+Your policy is scored on many simulated price paths you cannot see:
+    J = E[total transaction cost] + lam x std(terminal profit and loss),   lam = 2
+Lower is better. Trading more often lowers the std but raises the cost; the aim is the best balance.
+
+YOUR CHOICE: a no-trade band that may depend on the state. At every decision time you trade to the Black-Scholes delta only if your holding differs from it by MORE than band(gamma, S, tau), where gamma is the option's gamma, S the current stock price and tau the time left to maturity. The result is clipped to [0, 1].
+
+Allowed: + - * / **, exp, log, sqrt, abs, maximum, minimum, pi, the variables gamma, S, tau, and the constants c, lam, sigma, r, T (use their names).
+
+Finish your reply with exactly one line:
+  band(gamma,S,tau) = <expression>
+Worked example of the format (a constant band):
+  band(gamma,S,tau) = 0.03
+
+Hint: a band that is the same everywhere is easy; a band that reacts to gamma and to the cost c can do better.
+
+round 0: rewards [1.0, 1.0, 0.6, 0.6]  mean 0.80  best 1.0  0 tool call(s)  (3.4s)
+SOLVED: band(gamma,S,tau) = 1.4*(c*S*gamma**2)**(1/3)
+
+=========== summary: level 5 ===========
+  level5.1     reward 1.0 after 1 round(s)  SOLVED
+  level5.2     reward 1.0 after 1 round(s)  SOLVED
+  level5.3     reward 1.0 after 1 round(s)  SOLVED
+  solved 3/3
+
+attempts logged to artifacts/offline.jsonl

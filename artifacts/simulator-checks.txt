@@ -1,0 +1,10 @@
+simulator validation (a wrong simulator makes every score meaningless)
+  c = 0, daily hedge: mean P&L +0.0006 (3 std errors = 0.0094)  ok
+  c = 0: std at 63 steps / std at 252 steps = 1.96 (theory 2.00)  ok
+  cost at c = 0.010 / cost at c = 0.005 = 2.000000 (must be 2)  ok
+  unhedged std 13.15 vs daily-hedged std 0.44  ok
+  same seed -> same J, other seed -> different J  ok
+  optimal band at c = 0.005: 0.095  <  at c = 0.010: 0.200  ok
+
+Simulator-only checks passed: True
+Original checker/plumbing tests remain blocked by missing source.
