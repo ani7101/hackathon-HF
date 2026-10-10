@@ -1,0 +1,55 @@
+test_benchmark (test_hedge_core.HedgeCoreTests.test_benchmark) ... ok
+test_final_line_and_thinking (test_hedge_core.HedgeCoreTests.test_final_line_and_thinking) ... ok
+test_invalid_interval_does_not_crash (test_hedge_core.HedgeCoreTests.test_invalid_interval_does_not_crash) ... ok
+test_nonfinite_and_bad_shape (test_hedge_core.HedgeCoreTests.test_nonfinite_and_bad_shape) ... ok
+test_reject_unsafe_or_unbounded_syntax (test_hedge_core.HedgeCoreTests.test_reject_unsafe_or_unbounded_syntax) ... ok
+test_scoring_thresholds (test_hedge_core.HedgeCoreTests.test_scoring_thresholds) ... ok
+test_vector_formula (test_hedge_core.HedgeCoreTests.test_vector_formula) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.022s
+
+OK
+level 5: hedging a short call under transaction costs
+
+simulator validation (a wrong simulator makes every score meaningless)
+  c = 0, daily hedge: mean P&L +0.0006 (3 std errors = 0.0094)  ok
+  c = 0: std at 63 steps / std at 252 steps = 1.96 (theory 2.00)  ok
+  cost at c = 0.010 / cost at c = 0.005 = 2.000000 (must be 2)  ok
+  unhedged std 13.15 vs daily-hedged std 0.44  ok
+  same seed -> same J, other seed -> different J  ok
+  optimal band at c = 0.005: 0.095  <  at c = 0.010: 0.200  ok
+
+level5.1: c=0.01 lam=2 sigma=0.3 T=0.5 r=0
+   unhedged J 27.529 | daily full hedge J 7.277 | best J 5.476 at {'interval': 4, 'band': 0.0}  (daily hedge is 33% worse than best)
+   best policy          reward 1.0  ok
+   daily full hedge     reward 0.4  ok
+   trade almost never   reward 0.4  ok
+   no answer line       reward 0.0  ok
+   invalid interval     reward 0.0  ok
+
+level5.2: c=0.005 lam=2 sigma=0.3 T=0.5 r=0
+   unhedged J 27.529 | daily full hedge J 4.045 | best J 3.564 at {'interval': 1, 'band': 0.065}  (daily hedge is 14% worse than best)
+   best policy          reward 1.0  ok
+   daily full hedge     reward 0.4  ok
+   trade almost never   reward 0.4  ok
+   no answer line       reward 0.0  ok
+   band out of range    reward 0.0  ok
+
+level5.3: c=0.01 lam=2 sigma=0.2 T=0.5 r=0.02
+   unhedged J 18.447 | daily full hedge J 7.096 | best J 4.403 at {'kappa': 1.4}  (daily hedge is 61% worse than best)
+   best policy          reward 1.0  ok
+   daily full hedge     reward 0.4  ok
+   trade almost never   reward 0.4  ok
+   no answer line       reward 0.0  ok
+   log of a negative    reward 0.0  ok
+   unsafe code          reward 0.0  ok
+
+5.3: best constant band J 4.504 vs best state-dependent J 4.403 (2.3% better)  ok
+feedback direction: band=0 -> 'trade less': yes;  band=0.5 -> 'hedge more': yes
+
+SELFTEST PASSED
+level 5 tool loop (SIM: -> answer -> graded -> logged): reward 1.0  ok
+simulator refuses an out-of-range band: ok
+
+PLUMBING PASSED
