@@ -1,0 +1,1016 @@
+{
+  "status": "selected",
+  "search_method": "ai_jump_diffusion",
+  "calibration_status": "historical_threshold_fit",
+  "calibration": {
+    "symbol": "SPY",
+    "status": "historical_threshold_fit",
+    "first_date": "2021-10-11",
+    "last_date": "2026-10-09",
+    "observations": 1255,
+    "last_close": 778.5700073242188,
+    "threshold_robust_std": 3,
+    "identified_extreme_days": 42,
+    "caveat": "Daily extremes proxy for jumps; includes diffusion on event days. Adjusted returns proxy total returns; explicit dividends not modeled. No claim these are pure Poisson event estimates or future predictions.",
+    "source": "https://query1.finance.yahoo.com/v8/finance/chart/SPY"
+  },
+  "jump_model": "compound_poisson_lognormal_physical_measure",
+  "market_diagnostics": {
+    "base": {
+      "parameters": {
+        "expected_return": 0.14561035284926013,
+        "diffusion_vol": 0.1374609125275855,
+        "jump_intensity": 8.440191387559809,
+        "jump_log_mean": -0.008190001429069185,
+        "jump_log_std": 0.035633275405068214
+      },
+      "seed": 10,
+      "event_source": "synthetic_poisson_draws_not_historical_events",
+      "observed_jumps": 16989,
+      "paths_with_jumps": 2000,
+      "mean_jumps_per_path": 8.4945,
+      "stress_profile": "simple",
+      "induced_stress": false
+    },
+    "more_jumps": {
+      "parameters": {
+        "expected_return": 0.14561035284926013,
+        "diffusion_vol": 0.1374609125275855,
+        "jump_intensity": 10.55023923444976,
+        "jump_log_mean": -0.008190001429069185,
+        "jump_log_std": 0.035633275405068214
+      },
+      "seed": 11,
+      "event_source": "synthetic_poisson_draws_not_historical_events",
+      "observed_jumps": 21286,
+      "paths_with_jumps": 2000,
+      "mean_jumps_per_path": 10.643,
+      "stress_profile": "simple",
+      "induced_stress": true
+    }
+  },
+  "stress_profile": "simple",
+  "model": "Qwen/Qwen3-8B",
+  "config": {
+    "spot": 778.5700073242188,
+    "strike": 778.5700073242188,
+    "maturity": 1,
+    "steps": 252,
+    "rate": 0.04,
+    "mark_vol": 0.1374609125275855,
+    "fee_rate": 0.0005,
+    "capital": 1000.0
+  },
+  "limits": {
+    "alpha": 0.95,
+    "max_drawdown_cvar": 0.1,
+    "max_terminal_loss_cvar": 100.0,
+    "min_cash": 0.0
+  },
+  "seed": 10,
+  "paths_per_set": 2000,
+  "scenarios": [
+    "base",
+    "more_jumps"
+  ],
+  "objective": "mean execution fees on base scenarios",
+  "proposal_budget": 50,
+  "simulator_evaluations": 17,
+  "best": {
+    "policy": {
+      "base_band": 0.25,
+      "drawdown_response": 15
+    },
+    "objective": 0.9017087003956674,
+    "feasible": true,
+    "metrics": {
+      "base": {
+        "mean_fees": 0.9017087003956674,
+        "drawdown_cvar": 0.031026780254287286,
+        "terminal_loss_cvar": 50.306633074683596,
+        "minimum_cash": 190.65838919657435,
+        "minimum_equity": 960.1798662975111,
+        "mean_terminal_equity": 1026.0540262600734,
+        "feasible": true,
+        "violations": []
+      },
+      "more_jumps": {
+        "mean_fees": 0.9216802689563979,
+        "drawdown_cvar": 0.03590297526490566,
+        "terminal_loss_cvar": 56.963976364619874,
+        "minimum_cash": 157.79227927391372,
+        "minimum_equity": 931.9488133025394,
+        "mean_terminal_equity": 1023.8043470772302,
+        "feasible": true,
+        "violations": []
+      }
+    },
+    "iteration": 1,
+    "normalized_violation": 0.0
+  },
+  "closest_infeasible": null,
+  "records": [
+    {
+      "policy": {
+        "base_band": 0.25,
+        "drawdown_response": 15
+      },
+      "objective": 0.9017087003956674,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 0.9017087003956674,
+          "drawdown_cvar": 0.031026780254287286,
+          "terminal_loss_cvar": 50.306633074683596,
+          "minimum_cash": 190.65838919657435,
+          "minimum_equity": 960.1798662975111,
+          "mean_terminal_equity": 1026.0540262600734,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 0.9216802689563979,
+          "drawdown_cvar": 0.03590297526490566,
+          "terminal_loss_cvar": 56.963976364619874,
+          "minimum_cash": 157.79227927391372,
+          "minimum_equity": 931.9488133025394,
+          "mean_terminal_equity": 1023.8043470772302,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 1,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.2,
+        "drawdown_response": 10
+      },
+      "objective": 0.9450104774465546,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 0.9450104774465546,
+          "drawdown_cvar": 0.0314562610056575,
+          "terminal_loss_cvar": 50.62504379894965,
+          "minimum_cash": 192.95771161237332,
+          "minimum_equity": 953.5943641048739,
+          "mean_terminal_equity": 1025.295258292069,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 0.9708889542954553,
+          "drawdown_cvar": 0.033774269920680666,
+          "terminal_loss_cvar": 53.92050121217629,
+          "minimum_cash": 182.2574124570895,
+          "minimum_equity": 939.8587519784272,
+          "mean_terminal_equity": 1023.0697132493207,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 2,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.15,
+        "drawdown_response": 8
+      },
+      "objective": 1.0736826946757958,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0736826946757958,
+          "drawdown_cvar": 0.024610265033554016,
+          "terminal_loss_cvar": 39.81899134198846,
+          "minimum_cash": 200.77511872499758,
+          "minimum_equity": 969.1482642834188,
+          "mean_terminal_equity": 1027.7466916931596,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.0996860486392974,
+          "drawdown_cvar": 0.028063341673809236,
+          "terminal_loss_cvar": 47.05849596931392,
+          "minimum_cash": 195.6058323350569,
+          "minimum_equity": 948.4480164739266,
+          "mean_terminal_equity": 1025.2188573147569,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 3,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.1,
+        "drawdown_response": 12
+      },
+      "objective": 1.2254254448039241,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.2254254448039241,
+          "drawdown_cvar": 0.022971339444391968,
+          "terminal_loss_cvar": 37.98565404541287,
+          "minimum_cash": 180.6424869904046,
+          "minimum_equity": 942.5857463869514,
+          "mean_terminal_equity": 1028.1930273376875,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.2539827770520746,
+          "drawdown_cvar": 0.02650613832266617,
+          "terminal_loss_cvar": 44.67188526602085,
+          "minimum_cash": 186.18265727977712,
+          "minimum_equity": 953.3004843852422,
+          "mean_terminal_equity": 1025.6581373264796,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 4,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.18,
+        "drawdown_response": 14
+      },
+      "objective": 1.0264087450979595,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0264087450979595,
+          "drawdown_cvar": 0.02533013819684302,
+          "terminal_loss_cvar": 40.850952242617325,
+          "minimum_cash": 202.120253943683,
+          "minimum_equity": 960.4418299437265,
+          "mean_terminal_equity": 1027.4245513921358,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.0516880229834882,
+          "drawdown_cvar": 0.029519506927549538,
+          "terminal_loss_cvar": 48.74332462188496,
+          "minimum_cash": 184.18058082240577,
+          "minimum_equity": 943.076990853976,
+          "mean_terminal_equity": 1025.0484343343614,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 5,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.16,
+        "drawdown_response": 13
+      },
+      "objective": 1.0612759880441998,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0612759880441998,
+          "drawdown_cvar": 0.025153070836432416,
+          "terminal_loss_cvar": 40.427092606974455,
+          "minimum_cash": 198.43444580542837,
+          "minimum_equity": 956.7495806458545,
+          "mean_terminal_equity": 1027.9349244348637,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.088987935863766,
+          "drawdown_cvar": 0.02871626370706401,
+          "terminal_loss_cvar": 47.723004678439096,
+          "minimum_cash": 188.12569909073184,
+          "minimum_equity": 950.4991969649199,
+          "mean_terminal_equity": 1025.26601103296,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 6,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.14,
+        "drawdown_response": 11
+      },
+      "objective": 1.0932109975536792,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0932109975536792,
+          "drawdown_cvar": 0.024909067400644865,
+          "terminal_loss_cvar": 40.146481936459196,
+          "minimum_cash": 197.3435252700575,
+          "minimum_equity": 955.6567536647234,
+          "mean_terminal_equity": 1027.6003106217556,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.1226929869974889,
+          "drawdown_cvar": 0.027765086934006367,
+          "terminal_loss_cvar": 46.85493953808584,
+          "minimum_cash": 187.72357496197208,
+          "minimum_equity": 950.8568159396615,
+          "mean_terminal_equity": 1024.9915053564332,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 7,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.12,
+        "drawdown_response": 16
+      },
+      "objective": 1.1563964931836226,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.1563964931836226,
+          "drawdown_cvar": 0.023815591810979447,
+          "terminal_loss_cvar": 39.08192274034577,
+          "minimum_cash": 204.8557303690128,
+          "minimum_equity": 963.182086769887,
+          "mean_terminal_equity": 1027.563182759203,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.1841926357842967,
+          "drawdown_cvar": 0.02684417375003305,
+          "terminal_loss_cvar": 45.230627985175545,
+          "minimum_cash": 194.68259897745838,
+          "minimum_equity": 947.630593818303,
+          "mean_terminal_equity": 1024.9045388031254,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 8,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.14,
+        "drawdown_response": 12
+      },
+      "objective": 1.0943495673689907,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0943495673689907,
+          "drawdown_cvar": 0.02489993978512201,
+          "terminal_loss_cvar": 40.02636176247595,
+          "minimum_cash": 197.3435252700575,
+          "minimum_equity": 955.6567536647234,
+          "mean_terminal_equity": 1027.5887444079133,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.1227373949148662,
+          "drawdown_cvar": 0.02775382872495302,
+          "terminal_loss_cvar": 46.82470861411926,
+          "minimum_cash": 194.38947928749886,
+          "minimum_equity": 950.8568159396615,
+          "mean_terminal_equity": 1025.043410037076,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 9,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.15,
+        "drawdown_response": 13
+      },
+      "objective": 1.0778840882636058,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0778840882636058,
+          "drawdown_cvar": 0.02459270809741066,
+          "terminal_loss_cvar": 39.488425827232575,
+          "minimum_cash": 201.51725967850098,
+          "minimum_equity": 970.0450885598292,
+          "mean_terminal_equity": 1027.7829290408047,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.106257232632737,
+          "drawdown_cvar": 0.028113088623991683,
+          "terminal_loss_cvar": 47.024253028841486,
+          "minimum_cash": 191.5444756419607,
+          "minimum_equity": 951.9198250419701,
+          "mean_terminal_equity": 1025.2447616990348,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 10,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.17,
+        "drawdown_response": 14
+      },
+      "objective": 1.0463410480377142,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0463410480377142,
+          "drawdown_cvar": 0.025040736827562728,
+          "terminal_loss_cvar": 40.93334737311799,
+          "minimum_cash": 192.82058146633472,
+          "minimum_equity": 964.4948293439016,
+          "mean_terminal_equity": 1027.7278691227943,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.0724276851571708,
+          "drawdown_cvar": 0.028812988920698245,
+          "terminal_loss_cvar": 48.14115806987809,
+          "minimum_cash": 182.3085063325626,
+          "minimum_equity": 944.6986010364412,
+          "mean_terminal_equity": 1025.3058182675825,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 11,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.19,
+        "drawdown_response": 11
+      },
+      "objective": 0.9845156155322767,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 0.9845156155322767,
+          "drawdown_cvar": 0.027029095614833593,
+          "terminal_loss_cvar": 44.17297324843688,
+          "minimum_cash": 201.66680665205723,
+          "minimum_equity": 959.5858462565018,
+          "mean_terminal_equity": 1026.1019637876311,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.0117508090240148,
+          "drawdown_cvar": 0.03127287392007175,
+          "terminal_loss_cvar": 49.494315120533926,
+          "minimum_cash": 195.632699556209,
+          "minimum_equity": 953.3580723026872,
+          "mean_terminal_equity": 1023.9357855512471,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 13,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.18,
+        "drawdown_response": 17
+      },
+      "objective": 1.030674176517161,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.030674176517161,
+          "drawdown_cvar": 0.024978450116557062,
+          "terminal_loss_cvar": 40.43296887879559,
+          "minimum_cash": 202.120253943683,
+          "minimum_equity": 960.4418299437265,
+          "mean_terminal_equity": 1027.5563836164881,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.0572450022846849,
+          "drawdown_cvar": 0.028847609513716458,
+          "terminal_loss_cvar": 48.14126637565611,
+          "minimum_cash": 183.53319924888692,
+          "minimum_equity": 945.9197998241367,
+          "mean_terminal_equity": 1025.1910809655255,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 15,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.16,
+        "drawdown_response": 16
+      },
+      "objective": 1.063822852292888,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.063822852292888,
+          "drawdown_cvar": 0.02498786838741576,
+          "terminal_loss_cvar": 40.53607115799899,
+          "minimum_cash": 198.43444580542837,
+          "minimum_equity": 956.7495806458545,
+          "mean_terminal_equity": 1027.8993117023308,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.092332571892276,
+          "drawdown_cvar": 0.028745051339803034,
+          "terminal_loss_cvar": 47.293382383278555,
+          "minimum_cash": 195.65900360384614,
+          "minimum_equity": 958.7043682689554,
+          "mean_terminal_equity": 1025.2471235765445,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 16,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.12,
+        "drawdown_response": 18
+      },
+      "objective": 1.1583768721736256,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.1583768721736256,
+          "drawdown_cvar": 0.023563720676288546,
+          "terminal_loss_cvar": 38.84191214277105,
+          "minimum_cash": 204.8557303690128,
+          "minimum_equity": 963.182086769887,
+          "mean_terminal_equity": 1027.68325121403,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.1876556870762187,
+          "drawdown_cvar": 0.026810191132184587,
+          "terminal_loss_cvar": 45.32831991493298,
+          "minimum_cash": 188.71949508290993,
+          "minimum_equity": 946.3164336330309,
+          "mean_terminal_equity": 1024.8697830028286,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 18,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.14,
+        "drawdown_response": 16
+      },
+      "objective": 1.0981785697064372,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.0981785697064372,
+          "drawdown_cvar": 0.024794312745505556,
+          "terminal_loss_cvar": 40.57015454940014,
+          "minimum_cash": 197.3435252700575,
+          "minimum_equity": 955.6567536647234,
+          "mean_terminal_equity": 1027.5108997172288,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.126039528122726,
+          "drawdown_cvar": 0.027301120523677523,
+          "terminal_loss_cvar": 46.633491887715685,
+          "minimum_cash": 201.58824022351803,
+          "minimum_equity": 952.5354775546203,
+          "mean_terminal_equity": 1024.973904872949,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 19,
+      "normalized_violation": 0.0
+    },
+    {
+      "policy": {
+        "base_band": 0.13,
+        "drawdown_response": 17
+      },
+      "objective": 1.1169959415947628,
+      "feasible": true,
+      "metrics": {
+        "base": {
+          "mean_fees": 1.1169959415947628,
+          "drawdown_cvar": 0.024063022231904405,
+          "terminal_loss_cvar": 40.21161295476747,
+          "minimum_cash": 193.74500691420826,
+          "minimum_equity": 952.0519466931224,
+          "mean_terminal_equity": 1027.5251555290658,
+          "feasible": true,
+          "violations": []
+        },
+        "more_jumps": {
+          "mean_fees": 1.1508942466291983,
+          "drawdown_cvar": 0.027702338908467322,
+          "terminal_loss_cvar": 46.63269702504613,
+          "minimum_cash": 192.03333891311195,
+          "minimum_equity": 950.8641928439544,
+          "mean_terminal_equity": 1024.6535071231995,
+          "feasible": true,
+          "violations": []
+        }
+      },
+      "iteration": 20,
+      "normalized_violation": 0.0
+    }
+  ],
+  "attempts": [
+    {
+      "iteration": 1,
+      "reply": "{\n  \"base_band\": 0.25,\n  \"drawdown_response\": 15\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 2,
+      "reply": "{\n  \"base_band\": 0.2,\n  \"drawdown_response\": 10\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 3,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 8\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 4,
+      "reply": "{\n  \"base_band\": 0.1,\n  \"drawdown_response\": 12\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 5,
+      "reply": "{\n  \"base_band\": 0.18,\n  \"drawdown_response\": 14\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 6,
+      "reply": "{\n  \"base_band\": 0.16,\n  \"drawdown_response\": 13\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 7,
+      "reply": "{\n  \"base_band\": 0.14,\n  \"drawdown_response\": 11\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 8,
+      "reply": "{\n  \"base_band\": 0.12,\n  \"drawdown_response\": 16\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 9,
+      "reply": "{\n  \"base_band\": 0.14,\n  \"drawdown_response\": 12\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 10,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 11,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 12,
+      "reply": "{\n  \"base_band\": 0.16,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 13,
+      "reply": "{\n  \"base_band\": 0.19,\n  \"drawdown_response\": 11\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 14,
+      "reply": "{\n  \"base_band\": 0.16,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 15,
+      "reply": "{\n  \"base_band\": 0.18,\n  \"drawdown_response\": 17\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 16,
+      "reply": "{\n  \"base_band\": 0.16,\n  \"drawdown_response\": 16\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 17,
+      "reply": "{\n  \"base_band\": 0.14,\n  \"drawdown_response\": 12\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 18,
+      "reply": "{\n  \"base_band\": 0.12,\n  \"drawdown_response\": 18\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 19,
+      "reply": "{\n  \"base_band\": 0.14,\n  \"drawdown_response\": 16\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 20,
+      "reply": "{\n  \"base_band\": 0.13,\n  \"drawdown_response\": 17\n}",
+      "evaluated": true
+    },
+    {
+      "iteration": 21,
+      "reply": "{\n  \"base_band\": 0.14,\n  \"drawdown_response\": 16\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 22,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 23,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 24,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 25,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 26,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 27,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 28,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 29,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 30,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 31,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 32,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 33,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 34,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 35,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 36,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 37,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 38,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 39,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 40,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 41,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 42,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 43,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 44,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 45,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 46,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 47,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 48,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 49,
+      "reply": "{\n  \"base_band\": 0.15,\n  \"drawdown_response\": 13\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    },
+    {
+      "iteration": 50,
+      "reply": "{\n  \"base_band\": 0.17,\n  \"drawdown_response\": 14\n}",
+      "evaluated": false,
+      "error": "Duplicate policy; propose a different policy."
+    }
+  ],
+  "token_usage": {
+    "prompt_tokens": 57635,
+    "completion_tokens": 1197,
+    "total_tokens": 58832
+  },
+  "final_test": {
+    "seed": 1000010,
+    "paths_per_set": 2000,
+    "feasible": true,
+    "metrics": {
+      "base": {
+        "mean_fees": 0.899795651639457,
+        "drawdown_cvar": 0.03242537262424628,
+        "terminal_loss_cvar": 52.45187927923367,
+        "minimum_cash": 204.58158673884716,
+        "minimum_equity": 956.5200246994788,
+        "mean_terminal_equity": 1025.6224391046605,
+        "feasible": true,
+        "violations": []
+      },
+      "more_jumps": {
+        "mean_fees": 0.9279163233433142,
+        "drawdown_cvar": 0.03431943353570394,
+        "terminal_loss_cvar": 56.93393243725869,
+        "minimum_cash": 189.6047809948712,
+        "minimum_equity": 946.2726942688412,
+        "mean_terminal_equity": 1023.4630466185715,
+        "feasible": true,
+        "violations": []
+      }
+    },
+    "market_diagnostics": {
+      "base": {
+        "parameters": {
+          "expected_return": 0.14561035284926013,
+          "diffusion_vol": 0.1374609125275855,
+          "jump_intensity": 8.440191387559809,
+          "jump_log_mean": -0.008190001429069185,
+          "jump_log_std": 0.035633275405068214
+        },
+        "seed": 1000010,
+        "event_source": "synthetic_poisson_draws_not_historical_events",
+        "observed_jumps": 16803,
+        "paths_with_jumps": 1999,
+        "mean_jumps_per_path": 8.4015,
+        "stress_profile": "simple",
+        "induced_stress": false
+      },
+      "more_jumps": {
+        "parameters": {
+          "expected_return": 0.14561035284926013,
+          "diffusion_vol": 0.1374609125275855,
+          "jump_intensity": 10.55023923444976,
+          "jump_log_mean": -0.008190001429069185,
+          "jump_log_std": 0.035633275405068214
+        },
+        "seed": 1000011,
+        "event_source": "synthetic_poisson_draws_not_historical_events",
+        "observed_jumps": 20844,
+        "paths_with_jumps": 1999,
+        "mean_jumps_per_path": 10.422,
+        "stress_profile": "simple",
+        "induced_stress": true
+      }
+    }
+  },
+  "assumptions": [
+    "Physical-measure jump diffusion; see calibration metadata and caveats.",
+    "Fixed Black-Scholes marks/delta; no jump-aware option pricing.",
+    "Single share short call; symmetric cash interest; proportional fees.",
+    "Independent jumps; no volatility clustering, dividends or margin model.",
+    "Finite empirical evaluation; no convergence guarantee."
+  ]
+}

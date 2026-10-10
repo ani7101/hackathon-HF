@@ -30,7 +30,12 @@ class JumpTests(unittest.TestCase):
     def test_stress_families_and_validation(self):
         sets,meta=build_jump_sets(Config(),10,10,'stress',JumpParameters())
         self.assertEqual(set(sets),{'base','high_vol','downside_jumps','upside_jumps'})
-        self.assertEqual(meta['downside_jumps']['parameters']['jump_intensity'],4)
+        self.assertEqual(meta['downside_jumps']['parameters']['jump_intensity'],2)
+        self.assertAlmostEqual(meta['downside_jumps']['parameters']['jump_log_mean'],-.05)
+        self.assertFalse(meta['base']['induced_stress'])
+        self.assertIn('synthetic',meta['base']['event_source'])
+        _, severe=build_jump_sets(Config(),10,10,'stress',JumpParameters(),'severe')
+        self.assertEqual(severe['downside_jumps']['parameters']['jump_intensity'],4)
         with self.assertRaises(ValueError): JumpParameters(jump_intensity=-1)
 
     def test_historical_proxy_fit(self):

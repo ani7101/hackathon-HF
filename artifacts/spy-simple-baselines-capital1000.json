@@ -1,0 +1,1839 @@
+{
+  "source": "/Users/anirudhraghav/.codex/attachments/a7e6cfd7-fb2d-440e-b1f5-2ffeee39dcba/Pasted text.txt",
+  "config": {
+    "spot": 778.5700073242188,
+    "strike": 778.5700073242188,
+    "maturity": 1,
+    "steps": 252,
+    "rate": 0.04,
+    "mark_vol": 0.1374609361012806,
+    "fee_rate": 0.0005,
+    "capital": 1000.0
+  },
+  "limits": {
+    "alpha": 0.95,
+    "max_drawdown_cvar": 0.1,
+    "max_terminal_loss_cvar": 100.0,
+    "min_cash": 0.0
+  },
+  "stress_profile": "simple",
+  "seed": 10,
+  "paths_per_set": 2000,
+  "market_diagnostics": {
+    "base": {
+      "parameters": {
+        "expected_return": 0.14561038143017319,
+        "diffusion_vol": 0.1374609361012806,
+        "jump_intensity": 8.440191387559809,
+        "jump_log_mean": -0.008190096563489251,
+        "jump_log_std": 0.035633289518490506
+      },
+      "seed": 10,
+      "event_source": "synthetic_poisson_draws_not_historical_events",
+      "observed_jumps": 16989,
+      "paths_with_jumps": 2000,
+      "mean_jumps_per_path": 8.4945,
+      "stress_profile": "simple",
+      "induced_stress": false
+    },
+    "more_jumps": {
+      "parameters": {
+        "expected_return": 0.14561038143017319,
+        "diffusion_vol": 0.1374609361012806,
+        "jump_intensity": 10.55023923444976,
+        "jump_log_mean": -0.008190096563489251,
+        "jump_log_std": 0.035633289518490506
+      },
+      "seed": 11,
+      "event_source": "synthetic_poisson_draws_not_historical_events",
+      "observed_jumps": 21286,
+      "paths_with_jumps": 2000,
+      "mean_jumps_per_path": 10.643,
+      "stress_profile": "simple",
+      "induced_stress": true
+    }
+  },
+  "methods": {
+    "daily": {
+      "evaluations": 1,
+      "feasible_candidates": 1,
+      "selected": {
+        "policy": {
+          "base_band": 0,
+          "drawdown_response": 0
+        },
+        "objective": 2.251036065723116,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 2.251036065723116,
+            "drawdown_cvar": 0.022090999417866602,
+            "terminal_loss_cvar": 39.062500800078325,
+            "minimum_cash": 180.45687696914678,
+            "minimum_equity": 950.5030575240976,
+            "mean_terminal_equity": 1028.6944010616542,
+            "feasible": true,
+            "violations": []
+          },
+          "more_jumps": {
+            "mean_fees": 2.280031660760155,
+            "drawdown_cvar": 0.02635659820394535,
+            "terminal_loss_cvar": 46.4690930776736,
+            "minimum_cash": 184.4304906180982,
+            "minimum_equity": 955.3068966952808,
+            "mean_terminal_equity": 1025.9678285938016,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "final_test": {
+        "policy": {
+          "base_band": 0,
+          "drawdown_response": 0
+        },
+        "objective": 2.250700892099526,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 2.250700892099526,
+            "drawdown_cvar": 0.022887907984293163,
+            "terminal_loss_cvar": 40.0170578526608,
+            "minimum_cash": 204.05297095156416,
+            "minimum_equity": 960.0377189420503,
+            "mean_terminal_equity": 1028.6674318305795,
+            "feasible": true,
+            "violations": []
+          },
+          "more_jumps": {
+            "mean_fees": 2.2785495627398373,
+            "drawdown_cvar": 0.024815369285097078,
+            "terminal_loss_cvar": 44.61786670556694,
+            "minimum_cash": 180.343254012194,
+            "minimum_equity": 951.1247012927397,
+            "mean_terminal_equity": 1026.3369379903368,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "records": [
+        {
+          "policy": {
+            "base_band": 0,
+            "drawdown_response": 0
+          },
+          "objective": 2.251036065723116,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 2.251036065723116,
+              "drawdown_cvar": 0.022090999417866602,
+              "terminal_loss_cvar": 39.062500800078325,
+              "minimum_cash": 180.45687696914678,
+              "minimum_equity": 950.5030575240976,
+              "mean_terminal_equity": 1028.6944010616542,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 2.280031660760155,
+              "drawdown_cvar": 0.02635659820394535,
+              "terminal_loss_cvar": 46.4690930776736,
+              "minimum_cash": 184.4304906180982,
+              "minimum_equity": 955.3068966952808,
+              "mean_terminal_equity": 1025.9678285938016,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        }
+      ]
+    },
+    "fixed_band_0.10": {
+      "evaluations": 1,
+      "feasible_candidates": 1,
+      "selected": {
+        "policy": {
+          "base_band": 0.1,
+          "drawdown_response": 0
+        },
+        "objective": 1.2152602729154827,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 1.2152602729154827,
+            "drawdown_cvar": 0.023761007074166576,
+            "terminal_loss_cvar": 38.68330921849859,
+            "minimum_cash": 182.9381532729609,
+            "minimum_equity": 941.225958985522,
+            "mean_terminal_equity": 1028.1223177392183,
+            "feasible": true,
+            "violations": []
+          },
+          "more_jumps": {
+            "mean_fees": 1.2422388958106705,
+            "drawdown_cvar": 0.027034040513701216,
+            "terminal_loss_cvar": 45.382075100573154,
+            "minimum_cash": 188.45767020019866,
+            "minimum_equity": 954.4997543622217,
+            "mean_terminal_equity": 1025.5776056411958,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "final_test": {
+        "policy": {
+          "base_band": 0.1,
+          "drawdown_response": 0
+        },
+        "objective": 1.2103468660759857,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 1.2103468660759857,
+            "drawdown_cvar": 0.02377483461569508,
+            "terminal_loss_cvar": 39.87278120296833,
+            "minimum_cash": 212.08939976679676,
+            "minimum_equity": 972.3131866327863,
+            "mean_terminal_equity": 1028.1426593400113,
+            "feasible": true,
+            "violations": []
+          },
+          "more_jumps": {
+            "mean_fees": 1.2348686023776725,
+            "drawdown_cvar": 0.02553195459490061,
+            "terminal_loss_cvar": 44.21560752433871,
+            "minimum_cash": 206.59563781518807,
+            "minimum_equity": 952.888003916345,
+            "mean_terminal_equity": 1025.9503569753786,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "records": [
+        {
+          "policy": {
+            "base_band": 0.1,
+            "drawdown_response": 0
+          },
+          "objective": 1.2152602729154827,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.2152602729154827,
+              "drawdown_cvar": 0.023761007074166576,
+              "terminal_loss_cvar": 38.68330921849859,
+              "minimum_cash": 182.9381532729609,
+              "minimum_equity": 941.225958985522,
+              "mean_terminal_equity": 1028.1223177392183,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.2422388958106705,
+              "drawdown_cvar": 0.027034040513701216,
+              "terminal_loss_cvar": 45.382075100573154,
+              "minimum_cash": 188.45767020019866,
+              "minimum_equity": 954.4997543622217,
+              "mean_terminal_equity": 1025.5776056411958,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        }
+      ]
+    },
+    "grid_50": {
+      "evaluations": 50,
+      "feasible_candidates": 46,
+      "selected": {
+        "policy": {
+          "base_band": 0.4,
+          "drawdown_response": 2
+        },
+        "objective": 0.6836121578303271,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 0.6836121578303271,
+            "drawdown_cvar": 0.06389119376050596,
+            "terminal_loss_cvar": 84.6950914498818,
+            "minimum_cash": 141.36553230651765,
+            "minimum_equity": 918.207305030779,
+            "mean_terminal_equity": 1018.7472654040243,
+            "feasible": true,
+            "violations": []
+          },
+          "more_jumps": {
+            "mean_fees": 0.7033444745191371,
+            "drawdown_cvar": 0.0656077041663822,
+            "terminal_loss_cvar": 85.65871086832409,
+            "minimum_cash": 160.34389446513285,
+            "minimum_equity": 919.5795654189593,
+            "mean_terminal_equity": 1016.9203503202549,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "final_test": {
+        "policy": {
+          "base_band": 0.4,
+          "drawdown_response": 2
+        },
+        "objective": 0.6844351582777325,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 0.6844351582777325,
+            "drawdown_cvar": 0.06683079405060559,
+            "terminal_loss_cvar": 88.41099588830274,
+            "minimum_cash": 138.178315656594,
+            "minimum_equity": 916.1306554151856,
+            "mean_terminal_equity": 1017.7337044181972,
+            "feasible": true,
+            "violations": []
+          },
+          "more_jumps": {
+            "mean_fees": 0.7002609153341385,
+            "drawdown_cvar": 0.06564529109251696,
+            "terminal_loss_cvar": 87.34549348854134,
+            "minimum_cash": 127.36330085165969,
+            "minimum_equity": 905.1921659117153,
+            "mean_terminal_equity": 1017.4844223773802,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "records": [
+        {
+          "policy": {
+            "base_band": 0.01,
+            "drawdown_response": 0
+          },
+          "objective": 2.1269804414442284,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 2.1269804414442284,
+              "drawdown_cvar": 0.0220724759269936,
+              "terminal_loss_cvar": 38.94060489196143,
+              "minimum_cash": 180.65331516962806,
+              "minimum_equity": 950.5810515928249,
+              "mean_terminal_equity": 1028.736572110948,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 2.156224864809287,
+              "drawdown_cvar": 0.026326211504485927,
+              "terminal_loss_cvar": 46.33362109922563,
+              "minimum_cash": 184.623500507911,
+              "minimum_equity": 955.9655775005394,
+              "mean_terminal_equity": 1026.0238135357229,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.01,
+            "drawdown_response": 2
+          },
+          "objective": 2.1272742071801467,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 2.1272742071801467,
+              "drawdown_cvar": 0.022071268651147377,
+              "terminal_loss_cvar": 38.94229301339949,
+              "minimum_cash": 180.7128595400612,
+              "minimum_equity": 950.6406243244724,
+              "mean_terminal_equity": 1028.7343781545833,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 2.1565521208566443,
+              "drawdown_cvar": 0.026334428669298422,
+              "terminal_loss_cvar": 46.34280591009196,
+              "minimum_cash": 184.623500507911,
+              "minimum_equity": 955.4061395034171,
+              "mean_terminal_equity": 1026.0239413686186,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.01,
+            "drawdown_response": 5
+          },
+          "objective": 2.1276068342605257,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 2.1276068342605257,
+              "drawdown_cvar": 0.02206630172774059,
+              "terminal_loss_cvar": 38.94474660644853,
+              "minimum_cash": 180.7128595400612,
+              "minimum_equity": 950.6406243244724,
+              "mean_terminal_equity": 1028.7347011980223,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 2.1571700885952296,
+              "drawdown_cvar": 0.026334968198863037,
+              "terminal_loss_cvar": 46.33909279234262,
+              "minimum_cash": 184.623500507911,
+              "minimum_equity": 955.4267144347118,
+              "mean_terminal_equity": 1026.026185170286,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.01,
+            "drawdown_response": 10
+          },
+          "objective": 2.1281997716347867,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 2.1281997716347867,
+              "drawdown_cvar": 0.022066841636913567,
+              "terminal_loss_cvar": 38.95375057586014,
+              "minimum_cash": 183.50988694901983,
+              "minimum_equity": 950.8026926029404,
+              "mean_terminal_equity": 1028.7337568308149,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 2.1580033740627758,
+              "drawdown_cvar": 0.02633894378048137,
+              "terminal_loss_cvar": 46.330063792398036,
+              "minimum_cash": 184.623500507911,
+              "minimum_equity": 955.4267144347118,
+              "mean_terminal_equity": 1026.0246139394333,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.01,
+            "drawdown_response": 20
+          },
+          "objective": 2.1292924640206654,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 2.1292924640206654,
+              "drawdown_cvar": 0.022055826155049633,
+              "terminal_loss_cvar": 38.94970600018471,
+              "minimum_cash": 180.73243869904252,
+              "minimum_equity": 950.6602128090829,
+              "mean_terminal_equity": 1028.7354021291665,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 2.159418910561226,
+              "drawdown_cvar": 0.026349519720059125,
+              "terminal_loss_cvar": 46.33748857398348,
+              "minimum_cash": 184.623500507911,
+              "minimum_equity": 955.1583896019249,
+              "mean_terminal_equity": 1026.0210383262774,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.03,
+            "drawdown_response": 0
+          },
+          "objective": 1.7728338195031441,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.7728338195031441,
+              "drawdown_cvar": 0.022215915081438452,
+              "terminal_loss_cvar": 38.34468639315692,
+              "minimum_cash": 191.47594474609969,
+              "minimum_equity": 950.594882055517,
+              "mean_terminal_equity": 1028.8159827095583,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.8024708529413698,
+              "drawdown_cvar": 0.026254480737919507,
+              "terminal_loss_cvar": 45.72656911204199,
+              "minimum_cash": 187.02846031452032,
+              "minimum_equity": 951.9555675246961,
+              "mean_terminal_equity": 1026.1198973357614,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.03,
+            "drawdown_response": 2
+          },
+          "objective": 1.7740024069100044,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.7740024069100044,
+              "drawdown_cvar": 0.022222520716264446,
+              "terminal_loss_cvar": 38.38932449558788,
+              "minimum_cash": 191.47594474609969,
+              "minimum_equity": 950.594882055517,
+              "mean_terminal_equity": 1028.808455617855,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.8037669016591735,
+              "drawdown_cvar": 0.02621501902139851,
+              "terminal_loss_cvar": 45.70412046118231,
+              "minimum_cash": 187.02846031452032,
+              "minimum_equity": 955.4896653816965,
+              "mean_terminal_equity": 1026.114734670248,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.03,
+            "drawdown_response": 5
+          },
+          "objective": 1.775202859189083,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.775202859189083,
+              "drawdown_cvar": 0.02222485809909301,
+              "terminal_loss_cvar": 38.36386593390401,
+              "minimum_cash": 179.98266911073992,
+              "minimum_equity": 949.9100861026216,
+              "mean_terminal_equity": 1028.8053674491096,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.8057649815804178,
+              "drawdown_cvar": 0.026232421080428163,
+              "terminal_loss_cvar": 45.758936753918846,
+              "minimum_cash": 187.02846031452032,
+              "minimum_equity": 952.6385207879207,
+              "mean_terminal_equity": 1026.1111926521673,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.03,
+            "drawdown_response": 10
+          },
+          "objective": 1.7776648517588032,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.7776648517588032,
+              "drawdown_cvar": 0.02223833247781238,
+              "terminal_loss_cvar": 38.35459859295647,
+              "minimum_cash": 183.6872603081838,
+              "minimum_equity": 950.1588449803437,
+              "mean_terminal_equity": 1028.8033118754383,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.808783939226469,
+              "drawdown_cvar": 0.026296326712877204,
+              "terminal_loss_cvar": 45.86504513620249,
+              "minimum_cash": 187.3165298955107,
+              "minimum_equity": 951.9895624633884,
+              "mean_terminal_equity": 1026.1051901524233,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.03,
+            "drawdown_response": 20
+          },
+          "objective": 1.7811709317592859,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.7811709317592859,
+              "drawdown_cvar": 0.022266360030938993,
+              "terminal_loss_cvar": 38.40657404969786,
+              "minimum_cash": 186.60393383671132,
+              "minimum_equity": 950.3844769859708,
+              "mean_terminal_equity": 1028.7995572771442,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.8140068961273415,
+              "drawdown_cvar": 0.026302582262892667,
+              "terminal_loss_cvar": 45.83441248526157,
+              "minimum_cash": 187.3165298955107,
+              "minimum_equity": 951.5675979644022,
+              "mean_terminal_equity": 1026.1166548833169,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.05,
+            "drawdown_response": 0
+          },
+          "objective": 1.5300990925925912,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.5300990925925912,
+              "drawdown_cvar": 0.022244755802598618,
+              "terminal_loss_cvar": 37.79915438805853,
+              "minimum_cash": 181.97292180563252,
+              "minimum_equity": 943.9176397238612,
+              "mean_terminal_equity": 1028.5728049172726,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.5577358263600036,
+              "drawdown_cvar": 0.02592945093559485,
+              "terminal_loss_cvar": 44.705318697775,
+              "minimum_cash": 182.03132359568633,
+              "minimum_equity": 956.8203700892259,
+              "mean_terminal_equity": 1026.0210879353442,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.05,
+            "drawdown_response": 2
+          },
+          "objective": 1.5313603671221245,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.5313603671221245,
+              "drawdown_cvar": 0.022219179013041972,
+              "terminal_loss_cvar": 37.877047712752756,
+              "minimum_cash": 183.07163505315867,
+              "minimum_equity": 944.7688708129594,
+              "mean_terminal_equity": 1028.5655387463923,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.5592958137419541,
+              "drawdown_cvar": 0.025984193413840576,
+              "terminal_loss_cvar": 44.694616433591435,
+              "minimum_cash": 181.945891823951,
+              "minimum_equity": 957.0122116267198,
+              "mean_terminal_equity": 1026.0095229127166,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.05,
+            "drawdown_response": 5
+          },
+          "objective": 1.5332147117910055,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.5332147117910055,
+              "drawdown_cvar": 0.022191534154718688,
+              "terminal_loss_cvar": 37.807765837551095,
+              "minimum_cash": 185.649933503542,
+              "minimum_equity": 944.7688708129594,
+              "mean_terminal_equity": 1028.5802039469556,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.5622194514086876,
+              "drawdown_cvar": 0.02603372123796228,
+              "terminal_loss_cvar": 44.808290309503086,
+              "minimum_cash": 181.945891823951,
+              "minimum_equity": 957.2285715427249,
+              "mean_terminal_equity": 1026.0004900531658,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.05,
+            "drawdown_response": 10
+          },
+          "objective": 1.5358007583407869,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.5358007583407869,
+              "drawdown_cvar": 0.022284763811662094,
+              "terminal_loss_cvar": 37.726753707954344,
+              "minimum_cash": 185.649933503542,
+              "minimum_equity": 944.7688708129594,
+              "mean_terminal_equity": 1028.5856384374106,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.5661991897385428,
+              "drawdown_cvar": 0.026105443747244814,
+              "terminal_loss_cvar": 44.955239335311255,
+              "minimum_cash": 181.945891823951,
+              "minimum_equity": 954.3368909739727,
+              "mean_terminal_equity": 1026.0210767364676,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.05,
+            "drawdown_response": 20
+          },
+          "objective": 1.541069874248422,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.541069874248422,
+              "drawdown_cvar": 0.022281536203028026,
+              "terminal_loss_cvar": 37.81396133526848,
+              "minimum_cash": 174.13070685868954,
+              "minimum_equity": 944.0553365382866,
+              "mean_terminal_equity": 1028.6008894076167,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.5737386263667494,
+              "drawdown_cvar": 0.026062154438685228,
+              "terminal_loss_cvar": 45.096449790930336,
+              "minimum_cash": 182.47040224786792,
+              "minimum_equity": 955.4693539847985,
+              "mean_terminal_equity": 1026.0391401607721,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.075,
+            "drawdown_response": 0
+          },
+          "objective": 1.339817809722622,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.339817809722622,
+              "drawdown_cvar": 0.022836804497436226,
+              "terminal_loss_cvar": 38.160972500796866,
+              "minimum_cash": 188.22970642159726,
+              "minimum_equity": 946.5267594246238,
+              "mean_terminal_equity": 1028.3725530149086,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.3641631442295594,
+              "drawdown_cvar": 0.025980368172233516,
+              "terminal_loss_cvar": 44.51164641436204,
+              "minimum_cash": 189.34853607232594,
+              "minimum_equity": 948.5184430607976,
+              "mean_terminal_equity": 1025.9954552044674,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.075,
+            "drawdown_response": 2
+          },
+          "objective": 1.3421560522699665,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.3421560522699665,
+              "drawdown_cvar": 0.022824009034167165,
+              "terminal_loss_cvar": 38.18032541190098,
+              "minimum_cash": 188.22970642159726,
+              "minimum_equity": 946.5267594246238,
+              "mean_terminal_equity": 1028.3547994624541,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.366647437531179,
+              "drawdown_cvar": 0.026054482472367423,
+              "terminal_loss_cvar": 44.45596926174339,
+              "minimum_cash": 189.34853607232594,
+              "minimum_equity": 948.9905235938832,
+              "mean_terminal_equity": 1025.9973655767787,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.075,
+            "drawdown_response": 5
+          },
+          "objective": 1.3442137921744466,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.3442137921744466,
+              "drawdown_cvar": 0.022769558227708472,
+              "terminal_loss_cvar": 38.25045953437257,
+              "minimum_cash": 184.56171920236818,
+              "minimum_equity": 946.5101380454805,
+              "mean_terminal_equity": 1028.3822721410077,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.3704164147487254,
+              "drawdown_cvar": 0.026167851049268158,
+              "terminal_loss_cvar": 44.59334765825919,
+              "minimum_cash": 190.80919061780435,
+              "minimum_equity": 950.0403813934972,
+              "mean_terminal_equity": 1025.9946003538523,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.075,
+            "drawdown_response": 10
+          },
+          "objective": 1.347941795440937,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.347941795440937,
+              "drawdown_cvar": 0.022674055645897362,
+              "terminal_loss_cvar": 37.908341076613155,
+              "minimum_cash": 185.74509139445385,
+              "minimum_equity": 947.4330075567514,
+              "mean_terminal_equity": 1028.4242991198798,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.3736357191659985,
+              "drawdown_cvar": 0.026183357876711826,
+              "terminal_loss_cvar": 44.36741045324841,
+              "minimum_cash": 190.80919061780435,
+              "minimum_equity": 951.7409255773455,
+              "mean_terminal_equity": 1026.0220777123916,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.075,
+            "drawdown_response": 20
+          },
+          "objective": 1.3539178049210467,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.3539178049210467,
+              "drawdown_cvar": 0.02252340825134142,
+              "terminal_loss_cvar": 37.52492996254935,
+              "minimum_cash": 189.7188282280357,
+              "minimum_equity": 948.8377655374529,
+              "mean_terminal_equity": 1028.4794083478619,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.3819720259822221,
+              "drawdown_cvar": 0.02596991452907031,
+              "terminal_loss_cvar": 44.0939087044698,
+              "minimum_cash": 187.11727458027696,
+              "minimum_equity": 957.5355245226576,
+              "mean_terminal_equity": 1026.0357163067847,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.1,
+            "drawdown_response": 0
+          },
+          "objective": 1.2152602729154827,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.2152602729154827,
+              "drawdown_cvar": 0.023761007074166576,
+              "terminal_loss_cvar": 38.68330921849859,
+              "minimum_cash": 182.9381532729609,
+              "minimum_equity": 941.225958985522,
+              "mean_terminal_equity": 1028.1223177392183,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.2422388958106705,
+              "drawdown_cvar": 0.027034040513701216,
+              "terminal_loss_cvar": 45.382075100573154,
+              "minimum_cash": 188.45767020019866,
+              "minimum_equity": 954.4997543622217,
+              "mean_terminal_equity": 1025.5776056411958,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.1,
+            "drawdown_response": 2
+          },
+          "objective": 1.217009535956886,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.217009535956886,
+              "drawdown_cvar": 0.02352896254249469,
+              "terminal_loss_cvar": 38.59777052215574,
+              "minimum_cash": 182.9381532729609,
+              "minimum_equity": 941.225958985522,
+              "mean_terminal_equity": 1028.136181860901,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.2442008813993781,
+              "drawdown_cvar": 0.026655124930244065,
+              "terminal_loss_cvar": 45.11054157538004,
+              "minimum_cash": 188.45767020019866,
+              "minimum_equity": 958.2538514926406,
+              "mean_terminal_equity": 1025.5846371249725,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.1,
+            "drawdown_response": 5
+          },
+          "objective": 1.2182165131995497,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.2182165131995497,
+              "drawdown_cvar": 0.02339165227854997,
+              "terminal_loss_cvar": 38.52959633930246,
+              "minimum_cash": 183.99225826962595,
+              "minimum_equity": 942.2819060906969,
+              "mean_terminal_equity": 1028.2129299889284,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.2475871942623211,
+              "drawdown_cvar": 0.026701102394258408,
+              "terminal_loss_cvar": 44.96544599587091,
+              "minimum_cash": 188.45767020019866,
+              "minimum_equity": 957.6325480316102,
+              "mean_terminal_equity": 1025.5590904055443,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.1,
+            "drawdown_response": 10
+          },
+          "objective": 1.2240219411845452,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.2240219411845452,
+              "drawdown_cvar": 0.023067885785341337,
+              "terminal_loss_cvar": 38.16827440301668,
+              "minimum_cash": 184.3245835673291,
+              "minimum_equity": 942.6148121457827,
+              "mean_terminal_equity": 1028.202338372798,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.2517809547636924,
+              "drawdown_cvar": 0.026568129306732996,
+              "terminal_loss_cvar": 44.616810946263975,
+              "minimum_cash": 184.76231244894973,
+              "minimum_equity": 953.300307965032,
+              "mean_terminal_equity": 1025.6378628669866,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.1,
+            "drawdown_response": 20
+          },
+          "objective": 1.2311442684880958,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.2311442684880958,
+              "drawdown_cvar": 0.022939347958042693,
+              "terminal_loss_cvar": 37.61084036516314,
+              "minimum_cash": 184.48829401399416,
+              "minimum_equity": 943.6072313234115,
+              "mean_terminal_equity": 1028.2054407321564,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.2627194589771626,
+              "drawdown_cvar": 0.026703615734958393,
+              "terminal_loss_cvar": 44.9770542804666,
+              "minimum_cash": 187.10118471761575,
+              "minimum_equity": 951.2210853449953,
+              "mean_terminal_equity": 1025.609995859823,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.15,
+            "drawdown_response": 0
+          },
+          "objective": 1.0644354041083237,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.0644354041083237,
+              "drawdown_cvar": 0.025909287256179567,
+              "terminal_loss_cvar": 40.74093316313992,
+              "minimum_cash": 200.7754028683326,
+              "minimum_equity": 966.7145471805526,
+              "mean_terminal_equity": 1027.706406867819,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.0882972974830318,
+              "drawdown_cvar": 0.030278624331766743,
+              "terminal_loss_cvar": 48.99945829143547,
+              "minimum_cash": 184.54595405733357,
+              "minimum_equity": 932.4697925298194,
+              "mean_terminal_equity": 1025.2745794203386,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.15,
+            "drawdown_response": 2
+          },
+          "objective": 1.067515951608043,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.067515951608043,
+              "drawdown_cvar": 0.02523282253555443,
+              "terminal_loss_cvar": 40.23155992152019,
+              "minimum_cash": 200.7754028683326,
+              "minimum_equity": 968.6608041976555,
+              "mean_terminal_equity": 1027.7657360835758,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.0926438352882184,
+              "drawdown_cvar": 0.029561245899226773,
+              "terminal_loss_cvar": 48.483184275154485,
+              "minimum_cash": 192.92982907081088,
+              "minimum_equity": 932.4697925298194,
+              "mean_terminal_equity": 1025.2395863443783,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.15,
+            "drawdown_response": 5
+          },
+          "objective": 1.0699361144864123,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.0699361144864123,
+              "drawdown_cvar": 0.024648773776285857,
+              "terminal_loss_cvar": 39.29515268142018,
+              "minimum_cash": 200.7754028683326,
+              "minimum_equity": 971.4100615850565,
+              "mean_terminal_equity": 1027.7804452640005,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.097160416148045,
+              "drawdown_cvar": 0.028538834486551954,
+              "terminal_loss_cvar": 47.95988202693161,
+              "minimum_cash": 191.59588729466827,
+              "minimum_equity": 948.4478155698464,
+              "mean_terminal_equity": 1025.1967306927102,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.15,
+            "drawdown_response": 10
+          },
+          "objective": 1.075280329786173,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.075280329786173,
+              "drawdown_cvar": 0.024631288050132438,
+              "terminal_loss_cvar": 39.81596504963019,
+              "minimum_cash": 200.7754028683326,
+              "minimum_equity": 969.1483011029358,
+              "mean_terminal_equity": 1027.7570434032525,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.1023807379080872,
+              "drawdown_cvar": 0.028315586661953596,
+              "terminal_loss_cvar": 47.19587291996903,
+              "minimum_cash": 189.65550972216383,
+              "minimum_equity": 950.0269901912636,
+              "mean_terminal_equity": 1025.2118226476746,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.15,
+            "drawdown_response": 20
+          },
+          "objective": 1.0821977513159382,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 1.0821977513159382,
+              "drawdown_cvar": 0.02443276980129332,
+              "terminal_loss_cvar": 39.66679838106633,
+              "minimum_cash": 201.82502755080446,
+              "minimum_equity": 966.7321731243759,
+              "mean_terminal_equity": 1027.8208052014338,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.112270224659977,
+              "drawdown_cvar": 0.027538492943710826,
+              "terminal_loss_cvar": 46.77902452245324,
+              "minimum_cash": 195.6058830096315,
+              "minimum_equity": 954.1815586284685,
+              "mean_terminal_equity": 1025.1139538159334,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.2,
+            "drawdown_response": 0
+          },
+          "objective": 0.9216768640719369,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.9216768640719369,
+              "drawdown_cvar": 0.036361406065023895,
+              "terminal_loss_cvar": 56.22117782316266,
+              "minimum_cash": 211.33864268477703,
+              "minimum_equity": 948.700389629326,
+              "mean_terminal_equity": 1025.0747266933577,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.9415092748243052,
+              "drawdown_cvar": 0.04163927864269851,
+              "terminal_loss_cvar": 60.92813710401069,
+              "minimum_cash": 215.61006049528834,
+              "minimum_equity": 906.623070458757,
+              "mean_terminal_equity": 1022.9196006862977,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.2,
+            "drawdown_response": 2
+          },
+          "objective": 0.9256303504398053,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.9256303504398053,
+              "drawdown_cvar": 0.036285279632956,
+              "terminal_loss_cvar": 55.50579301943509,
+              "minimum_cash": 201.29576026487268,
+              "minimum_equity": 948.700389629326,
+              "mean_terminal_equity": 1025.0188417803083,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.9440835842471113,
+              "drawdown_cvar": 0.04196092688716672,
+              "terminal_loss_cvar": 61.063498772568636,
+              "minimum_cash": 212.94632965688496,
+              "minimum_equity": 906.623070458757,
+              "mean_terminal_equity": 1022.8527373195952,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.2,
+            "drawdown_response": 5
+          },
+          "objective": 0.9303121513488201,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.9303121513488201,
+              "drawdown_cvar": 0.036310937541742375,
+              "terminal_loss_cvar": 55.05327608324144,
+              "minimum_cash": 191.70360580884477,
+              "minimum_equity": 948.700389629326,
+              "mean_terminal_equity": 1025.0032396622428,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.9522558542913167,
+              "drawdown_cvar": 0.040976420967326094,
+              "terminal_loss_cvar": 60.55892961862392,
+              "minimum_cash": 161.74032281144935,
+              "minimum_equity": 931.1531903653888,
+              "mean_terminal_equity": 1022.7169531564139,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.2,
+            "drawdown_response": 10
+          },
+          "objective": 0.9450105223492237,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.9450105223492237,
+              "drawdown_cvar": 0.031456268260165884,
+              "terminal_loss_cvar": 50.62507344050181,
+              "minimum_cash": 192.95779062878364,
+              "minimum_equity": 953.5943231744641,
+              "mean_terminal_equity": 1025.295238110774,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.9708890358536276,
+              "drawdown_cvar": 0.03377429494237559,
+              "terminal_loss_cvar": 53.92054760165989,
+              "minimum_cash": 182.25732510514115,
+              "minimum_equity": 939.8586646262052,
+              "mean_terminal_equity": 1023.0696863365237,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.2,
+            "drawdown_response": 20
+          },
+          "objective": 0.9853328829169923,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.9853328829169923,
+              "drawdown_cvar": 0.025640961208383287,
+              "terminal_loss_cvar": 42.039988980729945,
+              "minimum_cash": 199.32140303289668,
+              "minimum_equity": 957.6378394073904,
+              "mean_terminal_equity": 1026.4799921088688,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 1.010977395023788,
+              "drawdown_cvar": 0.0303699760137886,
+              "terminal_loss_cvar": 48.201026428597245,
+              "minimum_cash": 191.37214572018738,
+              "minimum_equity": 942.237056553198,
+              "mean_terminal_equity": 1024.0662846602297,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.3,
+            "drawdown_response": 0
+          },
+          "objective": 0.8756939048318664,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8756939048318664,
+              "drawdown_cvar": 0.03641808118985745,
+              "terminal_loss_cvar": 50.02268623566103,
+              "minimum_cash": 182.82016167656803,
+              "minimum_equity": 937.4902267186233,
+              "mean_terminal_equity": 1026.7857357299026,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8871294398104589,
+              "drawdown_cvar": 0.04067413800127133,
+              "terminal_loss_cvar": 58.89464301074614,
+              "minimum_cash": 175.7047388597756,
+              "minimum_equity": 903.8843368581877,
+              "mean_terminal_equity": 1024.349248006301,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.3,
+            "drawdown_response": 2
+          },
+          "objective": 0.8772753509202601,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8772753509202601,
+              "drawdown_cvar": 0.03461561564862927,
+              "terminal_loss_cvar": 49.480204103657954,
+              "minimum_cash": 189.0019439357357,
+              "minimum_equity": 927.3675532262469,
+              "mean_terminal_equity": 1026.8567284649225,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8894280358362939,
+              "drawdown_cvar": 0.03888028795927099,
+              "terminal_loss_cvar": 56.54175667085125,
+              "minimum_cash": 175.528022567196,
+              "minimum_equity": 931.506194381715,
+              "mean_terminal_equity": 1024.108452919705,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.3,
+            "drawdown_response": 5
+          },
+          "objective": 0.8776056376294301,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8776056376294301,
+              "drawdown_cvar": 0.0331648374513542,
+              "terminal_loss_cvar": 49.16442686524112,
+              "minimum_cash": 190.92722152569007,
+              "minimum_equity": 924.7814567190237,
+              "mean_terminal_equity": 1026.9219376057686,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8918992329149018,
+              "drawdown_cvar": 0.03793128384398164,
+              "terminal_loss_cvar": 56.39862579576538,
+              "minimum_cash": 188.16879844157978,
+              "minimum_equity": 943.2791517703129,
+              "mean_terminal_equity": 1024.0468706684476,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.3,
+            "drawdown_response": 10
+          },
+          "objective": 0.8823212634731478,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8823212634731478,
+              "drawdown_cvar": 0.03181268097929015,
+              "terminal_loss_cvar": 49.011032671375105,
+              "minimum_cash": 197.0476666616476,
+              "minimum_equity": 934.7675666885555,
+              "mean_terminal_equity": 1026.7284533957907,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8971366400128595,
+              "drawdown_cvar": 0.03630384023973656,
+              "terminal_loss_cvar": 55.73624286544071,
+              "minimum_cash": 178.52001488058033,
+              "minimum_equity": 941.4089622662786,
+              "mean_terminal_equity": 1023.8708861267958,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.3,
+            "drawdown_response": 20
+          },
+          "objective": 0.8841142773280212,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8841142773280212,
+              "drawdown_cvar": 0.029731738946974378,
+              "terminal_loss_cvar": 49.14557045642405,
+              "minimum_cash": 194.59634324100904,
+              "minimum_equity": 953.9809739897537,
+              "mean_terminal_equity": 1026.6300395885671,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.9052414195285172,
+              "drawdown_cvar": 0.035016534815932615,
+              "terminal_loss_cvar": 54.51656648647171,
+              "minimum_cash": 185.68807708838472,
+              "minimum_equity": 939.1136329534611,
+              "mean_terminal_equity": 1023.9222546271759,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.4,
+            "drawdown_response": 0
+          },
+          "objective": 0.6057472398592963,
+          "feasible": false,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.6057472398592963,
+              "drawdown_cvar": 0.11580625292721311,
+              "terminal_loss_cvar": 131.23594770280855,
+              "minimum_cash": 200.1637096051831,
+              "minimum_equity": 814.653684316481,
+              "mean_terminal_equity": 1016.4250548136405,
+              "feasible": false,
+              "violations": [
+                "drawdown_cvar",
+                "terminal_loss_cvar"
+              ]
+            },
+            "more_jumps": {
+              "mean_fees": 0.6152019150741257,
+              "drawdown_cvar": 0.13047050085377668,
+              "terminal_loss_cvar": 143.34511492241458,
+              "minimum_cash": 200.8194523526712,
+              "minimum_equity": 742.7983153133066,
+              "mean_terminal_equity": 1014.1756793142812,
+              "feasible": false,
+              "violations": [
+                "drawdown_cvar",
+                "terminal_loss_cvar"
+              ]
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.4,
+            "drawdown_response": 2
+          },
+          "objective": 0.6836121578303271,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.6836121578303271,
+              "drawdown_cvar": 0.06389119376050596,
+              "terminal_loss_cvar": 84.6950914498818,
+              "minimum_cash": 141.36553230651765,
+              "minimum_equity": 918.207305030779,
+              "mean_terminal_equity": 1018.7472654040243,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.7033444745191371,
+              "drawdown_cvar": 0.0656077041663822,
+              "terminal_loss_cvar": 85.65871086832409,
+              "minimum_cash": 160.34389446513285,
+              "minimum_equity": 919.5795654189593,
+              "mean_terminal_equity": 1016.9203503202549,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.4,
+            "drawdown_response": 5
+          },
+          "objective": 0.807929481779579,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.807929481779579,
+              "drawdown_cvar": 0.043485935508209686,
+              "terminal_loss_cvar": 55.79472251054508,
+              "minimum_cash": 191.0238438240312,
+              "minimum_equity": 939.7510604684243,
+              "mean_terminal_equity": 1022.3625718607531,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8162070075548581,
+              "drawdown_cvar": 0.04564152420062556,
+              "terminal_loss_cvar": 61.24321822522175,
+              "minimum_cash": 155.45125845784924,
+              "minimum_equity": 914.3199826415326,
+              "mean_terminal_equity": 1021.5109234092264,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.4,
+            "drawdown_response": 10
+          },
+          "objective": 0.8436994671435423,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8436994671435423,
+              "drawdown_cvar": 0.037247344328511324,
+              "terminal_loss_cvar": 49.934890561359964,
+              "minimum_cash": 189.10630020068635,
+              "minimum_equity": 945.5431983627235,
+              "mean_terminal_equity": 1025.6356356465799,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8542137130856395,
+              "drawdown_cvar": 0.04254499963887433,
+              "terminal_loss_cvar": 59.822216037947044,
+              "minimum_cash": 167.2033424164738,
+              "minimum_equity": 926.0832643925058,
+              "mean_terminal_equity": 1023.6203186448479,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.4,
+            "drawdown_response": 20
+          },
+          "objective": 0.8594009876936247,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8594009876936247,
+              "drawdown_cvar": 0.03527963148954303,
+              "terminal_loss_cvar": 49.12908638794422,
+              "minimum_cash": 176.09959035747448,
+              "minimum_equity": 947.7529885727553,
+              "mean_terminal_equity": 1026.7668568857564,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8647409669605395,
+              "drawdown_cvar": 0.038220833889099755,
+              "terminal_loss_cvar": 56.84917977830526,
+              "minimum_cash": 176.27373463894583,
+              "minimum_equity": 935.1622991986239,
+              "mean_terminal_equity": 1024.671304410714,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.5,
+            "drawdown_response": 0
+          },
+          "objective": 0.575000157195333,
+          "feasible": false,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.575000157195333,
+              "drawdown_cvar": 0.11573424701462409,
+              "terminal_loss_cvar": 131.12091340952168,
+              "minimum_cash": 214.49927061901428,
+              "minimum_equity": 814.653684316481,
+              "mean_terminal_equity": 1017.0162136872227,
+              "feasible": false,
+              "violations": [
+                "drawdown_cvar",
+                "terminal_loss_cvar"
+              ]
+            },
+            "more_jumps": {
+              "mean_fees": 0.5819243698897105,
+              "drawdown_cvar": 0.1304121242096997,
+              "terminal_loss_cvar": 143.33255088486328,
+              "minimum_cash": 182.39016004795667,
+              "minimum_equity": 742.7983153133066,
+              "mean_terminal_equity": 1014.8222144800492,
+              "feasible": false,
+              "violations": [
+                "drawdown_cvar",
+                "terminal_loss_cvar"
+              ]
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.5,
+            "drawdown_response": 2
+          },
+          "objective": 0.5789920955122686,
+          "feasible": false,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.5789920955122686,
+              "drawdown_cvar": 0.11579805147003844,
+              "terminal_loss_cvar": 131.18356283009962,
+              "minimum_cash": 214.49927061901428,
+              "minimum_equity": 814.653684316481,
+              "mean_terminal_equity": 1016.9281896616866,
+              "feasible": false,
+              "violations": [
+                "drawdown_cvar",
+                "terminal_loss_cvar"
+              ]
+            },
+            "more_jumps": {
+              "mean_fees": 0.5892529292876854,
+              "drawdown_cvar": 0.12889977554449214,
+              "terminal_loss_cvar": 144.09637663315408,
+              "minimum_cash": 19.97248960919876,
+              "minimum_equity": 795.5603221485251,
+              "mean_terminal_equity": 1014.5335926094069,
+              "feasible": false,
+              "violations": [
+                "drawdown_cvar",
+                "terminal_loss_cvar"
+              ]
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.5,
+            "drawdown_response": 5
+          },
+          "objective": 0.6215680225634,
+          "feasible": false,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.6215680225634,
+              "drawdown_cvar": 0.08291857536922377,
+              "terminal_loss_cvar": 106.65942379676918,
+              "minimum_cash": 134.3346476024467,
+              "minimum_equity": 908.0998232758909,
+              "mean_terminal_equity": 1017.6399714857212,
+              "feasible": false,
+              "violations": [
+                "terminal_loss_cvar"
+              ]
+            },
+            "more_jumps": {
+              "mean_fees": 0.6402118211985842,
+              "drawdown_cvar": 0.08448271272479971,
+              "terminal_loss_cvar": 108.21101639456901,
+              "minimum_cash": 130.29169210879718,
+              "minimum_equity": 903.7367902006695,
+              "mean_terminal_equity": 1015.694723329963,
+              "feasible": false,
+              "violations": [
+                "terminal_loss_cvar"
+              ]
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.5,
+            "drawdown_response": 10
+          },
+          "objective": 0.720488807912629,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.720488807912629,
+              "drawdown_cvar": 0.050102319065041846,
+              "terminal_loss_cvar": 65.50494077838141,
+              "minimum_cash": 168.66793331071102,
+              "minimum_equity": 937.9079177820356,
+              "mean_terminal_equity": 1020.4149026688904,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.7373269887336905,
+              "drawdown_cvar": 0.05147763384406533,
+              "terminal_loss_cvar": 68.21254363949127,
+              "minimum_cash": 170.21572090935615,
+              "minimum_equity": 920.3419798285762,
+              "mean_terminal_equity": 1019.0406810273624,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        },
+        {
+          "policy": {
+            "base_band": 0.5,
+            "drawdown_response": 20
+          },
+          "objective": 0.8078470650201464,
+          "feasible": true,
+          "metrics": {
+            "base": {
+              "mean_fees": 0.8078470650201464,
+              "drawdown_cvar": 0.03887200252870663,
+              "terminal_loss_cvar": 50.980585854409064,
+              "minimum_cash": 192.6061000631113,
+              "minimum_equity": 949.9134118173089,
+              "mean_terminal_equity": 1024.642083958008,
+              "feasible": true,
+              "violations": []
+            },
+            "more_jumps": {
+              "mean_fees": 0.8216973016673124,
+              "drawdown_cvar": 0.04311592153411904,
+              "terminal_loss_cvar": 60.68412137676344,
+              "minimum_cash": 156.7072181803843,
+              "minimum_equity": 915.5771390859616,
+              "mean_terminal_equity": 1022.8791340663321,
+              "feasible": true,
+              "violations": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  "note": "AI comparisons require identical scenario/profile/config and evaluation budgets. Grid uses 50 unique evaluations; rejected AI proposals do not count as evaluations."
+}

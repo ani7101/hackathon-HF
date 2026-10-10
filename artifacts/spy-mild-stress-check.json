@@ -1,0 +1,259 @@
+{
+  "evaluation": "saved calibration and policy under new mild synthetic stress; no new AI run",
+  "config": {
+    "spot": 778.5700073242188,
+    "strike": 778.5700073242188,
+    "maturity": 1,
+    "steps": 252,
+    "rate": 0.04,
+    "mark_vol": 0.1374609361012806,
+    "fee_rate": 0.0005,
+    "capital": 1000.0
+  },
+  "limits": {
+    "alpha": 0.95,
+    "max_drawdown_cvar": 0.1,
+    "max_terminal_loss_cvar": 100.0,
+    "min_cash": 0.0
+  },
+  "tests": [
+    {
+      "seed": 10,
+      "record": {
+        "policy": {
+          "base_band": 0.18,
+          "drawdown_response": 11
+        },
+        "objective": 1.020783116413921,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 1.020783116413921,
+            "drawdown_cvar": 0.02590906028626854,
+            "terminal_loss_cvar": 41.17006544909281,
+            "minimum_cash": 202.1205872686545,
+            "minimum_equity": 960.4419153770054,
+            "mean_terminal_equity": 1027.1794592281428,
+            "feasible": true,
+            "violations": []
+          },
+          "high_vol": {
+            "mean_fees": 1.3655634653613358,
+            "drawdown_cvar": 0.0548480536114008,
+            "terminal_loss_cvar": 88.05005435205393,
+            "minimum_cash": 162.11123497045412,
+            "minimum_equity": 922.533198760693,
+            "mean_terminal_equity": 1001.4100688450153,
+            "feasible": true,
+            "violations": []
+          },
+          "downside_jumps": {
+            "mean_fees": 1.045067857358071,
+            "drawdown_cvar": 0.028734635846748697,
+            "terminal_loss_cvar": 46.90119084415509,
+            "minimum_cash": 200.02584438460505,
+            "minimum_equity": 954.492217163098,
+            "mean_terminal_equity": 1025.2823354587865,
+            "feasible": true,
+            "violations": []
+          },
+          "upside_jumps": {
+            "mean_fees": 1.0110230787394492,
+            "drawdown_cvar": 0.025683323307215955,
+            "terminal_loss_cvar": 42.62372906462804,
+            "minimum_cash": 206.66052103080244,
+            "minimum_equity": 965.9341875863888,
+            "mean_terminal_equity": 1028.431423204884,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "diagnostics": {
+        "base": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.1374609361012806,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": -0.008190096563489251,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 10,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16989,
+          "paths_with_jumps": 2000,
+          "mean_jumps_per_path": 8.4945,
+          "stress_profile": "mild",
+          "induced_stress": false
+        },
+        "high_vol": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.24055663817724104,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": -0.008190096563489251,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 11,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16976,
+          "paths_with_jumps": 2000,
+          "mean_jumps_per_path": 8.488,
+          "stress_profile": "mild",
+          "induced_stress": true
+        },
+        "downside_jumps": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.1374609361012806,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": -0.01819009656348925,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 12,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16767,
+          "paths_with_jumps": 1998,
+          "mean_jumps_per_path": 8.3835,
+          "stress_profile": "mild",
+          "induced_stress": true
+        },
+        "upside_jumps": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.1374609361012806,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": 0.0018099034365107493,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 13,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16865,
+          "paths_with_jumps": 2000,
+          "mean_jumps_per_path": 8.4325,
+          "stress_profile": "mild",
+          "induced_stress": true
+        }
+      }
+    },
+    {
+      "seed": 1000010,
+      "record": {
+        "policy": {
+          "base_band": 0.18,
+          "drawdown_response": 11
+        },
+        "objective": 1.0218503505870982,
+        "feasible": true,
+        "metrics": {
+          "base": {
+            "mean_fees": 1.0218503505870982,
+            "drawdown_cvar": 0.02670961714344256,
+            "terminal_loss_cvar": 44.3444974923661,
+            "minimum_cash": 201.07710946178076,
+            "minimum_equity": 960.3826368554428,
+            "mean_terminal_equity": 1026.9043819683102,
+            "feasible": true,
+            "violations": []
+          },
+          "high_vol": {
+            "mean_fees": 1.3701964442005734,
+            "drawdown_cvar": 0.059244238182155594,
+            "terminal_loss_cvar": 92.16395534671072,
+            "minimum_cash": 146.3899613824026,
+            "minimum_equity": 891.199074060341,
+            "mean_terminal_equity": 1001.5450349424339,
+            "feasible": true,
+            "violations": []
+          },
+          "downside_jumps": {
+            "mean_fees": 1.0396236727675685,
+            "drawdown_cvar": 0.029029106390941858,
+            "terminal_loss_cvar": 47.69050232503682,
+            "minimum_cash": 160.79848117161865,
+            "minimum_equity": 933.4413705334929,
+            "mean_terminal_equity": 1025.1799422343356,
+            "feasible": true,
+            "violations": []
+          },
+          "upside_jumps": {
+            "mean_fees": 1.0229661495690452,
+            "drawdown_cvar": 0.02778096589321099,
+            "terminal_loss_cvar": 43.98948636711709,
+            "minimum_cash": 187.9782246410286,
+            "minimum_equity": 952.7078995192666,
+            "mean_terminal_equity": 1027.6819653485186,
+            "feasible": true,
+            "violations": []
+          }
+        }
+      },
+      "diagnostics": {
+        "base": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.1374609361012806,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": -0.008190096563489251,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 1000010,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16803,
+          "paths_with_jumps": 1999,
+          "mean_jumps_per_path": 8.4015,
+          "stress_profile": "mild",
+          "induced_stress": false
+        },
+        "high_vol": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.24055663817724104,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": -0.008190096563489251,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 1000011,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16650,
+          "paths_with_jumps": 1997,
+          "mean_jumps_per_path": 8.325,
+          "stress_profile": "mild",
+          "induced_stress": true
+        },
+        "downside_jumps": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.1374609361012806,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": -0.01819009656348925,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 1000012,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16814,
+          "paths_with_jumps": 2000,
+          "mean_jumps_per_path": 8.407,
+          "stress_profile": "mild",
+          "induced_stress": true
+        },
+        "upside_jumps": {
+          "parameters": {
+            "expected_return": 0.14561038143017319,
+            "diffusion_vol": 0.1374609361012806,
+            "jump_intensity": 8.440191387559809,
+            "jump_log_mean": 0.0018099034365107493,
+            "jump_log_std": 0.035633289518490506
+          },
+          "seed": 1000013,
+          "event_source": "synthetic_poisson_draws_not_historical_events",
+          "observed_jumps": 16908,
+          "paths_with_jumps": 2000,
+          "mean_jumps_per_path": 8.454,
+          "stress_profile": "mild",
+          "induced_stress": true
+        }
+      }
+    }
+  ]
+}

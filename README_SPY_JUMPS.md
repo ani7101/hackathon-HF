@@ -33,8 +33,11 @@ log return = (mu - lambda*kappa - sigma*sigma/2)*dt
 
 mu is a physical-measure expected price-return rate, distinct from the cash rate.
 The compensator preserves E[S(T)] = S(0)*exp(mu*T). Base uses the fitted values.
-High volatility multiplies diffusion volatility by 1.75. Downside and upside
-stress groups double jump intensity and shift log jump means by -0.08 and +0.12.
+High volatility multiplies diffusion volatility by 1.75. The optional mild downside/upside stress groups preserve fitted jump intensity
+and shift log jump means by -0.01 and +0.01. Jump standard deviation is unchanged.
+Use `--stress-profile severe` to reproduce the old doubled frequency and -0.08/+0.12
+mean shifts. Use `--scenario-set base` to omit all added stress families while
+retaining fitted synthetic jumps. The high-volatility multiplier remains 1.75.
 Those stress transformations are assumptions, not calibrated probabilities.
 
 ## Calibration limitations and defaults
@@ -65,3 +68,27 @@ does not guarantee feasibility or real-market performance. Fresh simulated paths
 test sampling robustness under the same assumed model, not an out-of-time backtest.
 
 Reference: Merton (1976), https://doi.org/10.1016/0304-405X(76)90022-2
+
+`observed_jumps` counts events in generated simulations, not in source data.
+`event_source` and `induced_stress` identify this explicitly in output diagnostics.
+Reducing added stresses makes a test easier; it does not make a policy safer.
+
+## Simple comparison (new default)
+
+`--stress-profile simple` tests two groups: fitted base and `more_jumps`.
+The second group has 1.25 times the fitted frequency with identical jump-size
+mean and standard deviation. It adds no high-volatility group or mean shifts.
+With the previously supplied SPY fit this is 8.44 versus 10.55 expected events/year.
+Both are synthetic. Extra frequency is an explicit stress assumption.
+
+Run a baseline using a saved AI result to preserve calibration and capital:
+
+```bash
+python baseline_spy.py --report artifacts/portfolio-spy-simple.json
+```
+
+This compares daily delta rebalancing, a fixed 0.10-share band, and a grid of 50
+unique (band,response) policies. All use identical search paths and independent
+fresh paths. Compare AI and grid at equal unique simulator evaluation counts;
+50 model proposals may contain invalid or duplicate candidates. Existing runs
+with different stresses cannot be directly compared to a new simple run.

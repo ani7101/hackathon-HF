@@ -96,7 +96,7 @@ def run(args):
     limits = Limits(args.alpha, args.drawdown_limit, args.loss_limit, args.cash_floor)
     if calibrated_params is not None:
         jump_params = calibrated_params
-    sets, diagnostics = build_jump_sets(config, args.paths, args.seed, args.scenario_set, jump_params)
+    sets, diagnostics = build_jump_sets(config, args.paths, args.seed, args.scenario_set, jump_params, args.stress_profile)
     base = args.base.rstrip('/')
     if not base.endswith('/v1'):
         base += '/v1'
@@ -129,7 +129,7 @@ def run(args):
         closest = min(records, key=lambda r: r['normalized_violation']) if records else None
         payload = dict(status=status, search_method='ai_jump_diffusion', calibration_status=calibration['status'], calibration=calibration,
                        jump_model='compound_poisson_lognormal_physical_measure',
-                       market_diagnostics=diagnostics, model=args.model,
+                       market_diagnostics=diagnostics, stress_profile=args.stress_profile, model=args.model,
                        config=asdict(config), limits=asdict(limits), seed=args.seed,
                        paths_per_set=args.paths, scenarios=list(sets),
                        objective='mean execution fees on base scenarios',
@@ -197,7 +197,7 @@ def run(args):
     final_test = None
     if best is not None:
         fresh, test_diagnostics = build_jump_sets(config, args.test_paths, args.seed + 1_000_000,
-                                                      args.scenario_set, jump_params)
+                                                      args.scenario_set, jump_params, args.stress_profile)
         _, checked = optimize([best['policy']], fresh, limits)
         final_test = dict(seed=args.seed + 1_000_000, paths_per_set=args.test_paths,
                           feasible=checked[0]['feasible'], metrics=checked[0]['metrics'],
@@ -231,6 +231,8 @@ def main():
     parser.add_argument('--jump-log-mean', type=float, default=-.04)
     parser.add_argument('--jump-log-std', type=float, default=.08)
     parser.add_argument('--seed', type=int, default=10)
+    parser.add_argument('--stress-profile', choices=('simple', 'mild', 'severe'), default='simple',
+                        help='Simple adds one stress: 25% more jumps, unchanged jump sizes. Mild/severe retain prior scenarios.')
     parser.add_argument('--scenario-set', choices=('base', 'stress'), default='stress')
     parser.add_argument('--alpha', type=float, default=.95)
     parser.add_argument('--drawdown-limit', type=float, default=.10)
